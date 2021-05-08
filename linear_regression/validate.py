@@ -23,15 +23,12 @@ def check_format(test_X_file_path, predicted_test_Y_file_path):
 def check_mse(actual_test_Y_file_path, predicted_test_Y_file_path):
     pred_Y = np.genfromtxt(predicted_test_Y_file_path, delimiter=',', dtype=np.float64)
     actual_Y = np.genfromtxt(actual_test_Y_file_path, delimiter=',', dtype=np.float64)
-    #from sklearn.metrics import mean_squared_error
-    #mse = mean_squared_error(actual_Y, pred_Y)
     mse=(np.sum((pred_Y-actual_Y)**2))/len(pred_Y)
     print("MSE", mse)
     return mse
 
 def validate(test_X_file_path, actual_test_Y_file_path):
     predicted_test_Y_file_path = "predicted_test_Y_lr.csv"
-    
     check_file_exits(predicted_test_Y_file_path)
     check_format(test_X_file_path, predicted_test_Y_file_path)
     check_mse(actual_test_Y_file_path, predicted_test_Y_file_path)
