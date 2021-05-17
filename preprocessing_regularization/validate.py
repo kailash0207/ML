@@ -1,7 +1,7 @@
 from os import path
 import numpy as np
 import csv
-
+from sklearn.metrics import f1_score
 
 def check_file_exits(predicted_test_Y_file_path):
     if not path.exists(predicted_test_Y_file_path):
@@ -25,7 +25,7 @@ def check_format(test_X_file_path, predicted_test_Y_file_path):
 def check_weighted_f1_score(actual_test_Y_file_path, predicted_test_Y_file_path):
     pred_Y = np.genfromtxt(predicted_test_Y_file_path, delimiter=',', dtype=np.int)
     actual_Y = np.genfromtxt(actual_test_Y_file_path, delimiter=',', dtype=np.int)
-    from sklearn.metrics import f1_score
+    
     weighted_f1_score = f1_score(actual_Y, pred_Y, average = 'weighted')
     print("Weighted F1 score", weighted_f1_score)
     return weighted_f1_score

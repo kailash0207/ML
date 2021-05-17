@@ -26,8 +26,6 @@ def check_weighted_f1_score(actual_test_Y_file_path, predicted_test_Y_file_path)
     actual_Y = np.genfromtxt(actual_test_Y_file_path, delimiter=',', dtype=np.int)
     from sklearn.metrics import f1_score
     weighted_f1_score = f1_score(actual_Y, pred_Y, average = 'weighted')
-    if weighted_f1_score<0.75:
-        weighted_f1_score=0.765
     print("Weighted F1 score", weighted_f1_score)
     return weighted_f1_score
 
